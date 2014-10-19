@@ -13,6 +13,20 @@ The source to open the movie at "/StreamingAssets/mymovie/dyson360eye.mp4"
 SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4");
 ```
 
+Customize
+=================
+
+Orientations
+-----------------
+
+* iOS/SimpleMovie.mm
+
+```
+playervc.supportedOrientationMask	= UIInterfaceOrientationMaskAll;	// UIInterfaceOrientationMaskLandscape;
+```
+
+
+
 about the sample movie - dyson360eye.mp4
 =================
 

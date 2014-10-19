@@ -1,7 +1,7 @@
 // Simple Movie integration plug-in for Unity iOS.
 
 #import <Foundation/Foundation.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import "SimpleMovieViewController.h"
 
 extern UIViewController *UnityGetGLViewController(); // Root view controller of Unity screen.
 
@@ -25,7 +25,11 @@ extern "C" void _SimpleMoviePluginPlayMovie(
 	NSURL* urlMovie = [NSURL fileURLWithPath:path];
 	
 	// load.
-	MPMoviePlayerViewController*	playervc = [[MPMoviePlayerViewController alloc] initWithContentURL:urlMovie];
+	SimpleMovieViewController*	playervc = [[SimpleMovieViewController alloc] initWithContentURL:urlMovie];
+
+	// setup for supported orientations
+	playervc.supportedOrientationMask	= UIInterfaceOrientationMaskAll;	//UIInterfaceOrientationMaskLandscape;
+	
 	//	[playervc.moviePlayer setControlStyle:MPMovieControlStyleDefault];
 	//	[playervc.moviePlayer setShouldAutoplay:YES];
 	//	[playervc.moviePlayer setFullscreen:YES];

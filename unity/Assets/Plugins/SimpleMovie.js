@@ -5,7 +5,6 @@
 
 import System.Runtime.InteropServices;
 
-
 #if UNITY_EDITOR
 // Unity Editor implementation.
 
