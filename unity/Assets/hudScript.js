@@ -20,9 +20,9 @@ function Update () {
 
 function OnGUI() {
 	if( GUI.Button ( Rect(0,70*screenScale, Screen.width,100*screenScale),
-			"Simple Movie!" ) )
+			"Simple Movie" ) )
 	{
-		SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4");
-		
+//		SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4");
+		SimpleMovie.PlayMovieURL("http://153.120.82.72/mov/ven054.mp4");
 	}
 }
