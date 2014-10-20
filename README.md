@@ -7,10 +7,17 @@ unity-simplemovie
 Usage
 =================
 
-The source to open the movie at "/StreamingAssets/mymovie/dyson360eye.mp4"
+* The source to open the movie at "/StreamingAssets/mymovie/dyson360eye.mp4" (Bundle)
 
 ```
 SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4");
+
+```
+
+* The source to open the movie at "http://example.com/movies/example.mp4"
+
+```
+SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4");
 ```
 
 Customize
