@@ -12,4 +12,7 @@
 
 @property UIInterfaceOrientationMask supportedOrientationMask;
 
+- (void) setupCallbackTarget:(const char*)movieFinishedTargetName
+									withMethod:(const char*)movieFinishedMethodName;
+
 @end
