@@ -10,14 +10,19 @@ Usage
 * The source to open the movie at "/StreamingAssets/mymovie/dyson360eye.mp4" (Bundle)
 
 ```
-SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4");
+var callbackTargetName = "hud";	// callback target (GameObject), (default:null)
+var callbackMethodName = "OnDoneSimpleMovie";	// calback method name for the target (default:null)
 
+SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callbackMethodName);
 ```
 
 * The source to open the movie at "http://example.com/movies/example.mp4"
 
 ```
-SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4");
+var callbackTargetName = "hud";	// callback target (GameObject), (default:null)
+var callbackMethodName = "OnDoneSimpleMovie";	// calback method name for the target (default:null)
+
+SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4", callbackTargetName, callbackMethodName;
 ```
 
 Customize
