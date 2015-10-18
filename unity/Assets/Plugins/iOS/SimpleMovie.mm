@@ -9,14 +9,28 @@ extern UIViewController *UnityGetGLViewController(); // Root view controller of 
 
 
 // configure player.
+// @param orientation	0:All, 1:Portrait only, 2:Landscape only
 extern "C" void _SimpleMoviePluginPlayMovieCore( SimpleMovieViewController* playervc,
-																								const char* movieFinishedTargetName = NULL, const char* movieFinishedMethodName = NULL )
+																								const char* movieFinishedTargetName = NULL,
+																								const char* movieFinishedMethodName = NULL,
+																								const int orientation = 0)
 {
 	if( playervc ){
 		UIViewController *rootVC = UnityGetGLViewController();
 
 		// setup for supported orientations
-		playervc.supportedOrientationMask	= UIInterfaceOrientationMaskAll;	//UIInterfaceOrientationMaskLandscape;
+		switch (orientation) {
+			case 1:
+				playervc.supportedOrientationMask	= UIInterfaceOrientationMaskPortrait;
+				break;
+			case 2:
+				playervc.supportedOrientationMask	= UIInterfaceOrientationMaskLandscape;
+				break;
+			default:
+				playervc.supportedOrientationMask	= UIInterfaceOrientationMaskAll;
+				break;
+		}
+		
 		[playervc setupCallbackTarget:movieFinishedTargetName withMethod:movieFinishedMethodName];
 		
 		//	[playervc.moviePlayer setControlStyle:MPMovieControlStyleDefault];
@@ -31,9 +45,12 @@ extern "C" void _SimpleMoviePluginPlayMovieCore( SimpleMovieViewController* play
 // @param pathname (/Assets/StreamingAssets/)pathname(/filename.mp4)
 // @param filename (path/)filename(.mp4)
 // @param filetype (filename).mp4
+// @param orientation	0:All, 1:Portrait only, 2:Landscape only
 extern "C" void _SimpleMoviePluginPlayMovie(
-		const char* pathname, const char* filename, const char* filetype,
-		const char* movieFinishedTargetName = NULL, const char* movieFinishedMethodName = NULL )
+																						const char* pathname, const char* filename, const char* filetype,
+																						const char* movieFinishedTargetName = NULL,
+																						const char* movieFinishedMethodName = NULL,
+																						const int orientation = 0 )
 {
 	// set the url.
 	NSString*	strPathname	= [NSString stringWithCString:pathname encoding:NSUTF8StringEncoding];
@@ -48,13 +65,16 @@ extern "C" void _SimpleMoviePluginPlayMovie(
 	// load.
 	SimpleMovieViewController*	playervc = [[SimpleMovieViewController alloc] initWithContentURL:urlMovie];
 
-	_SimpleMoviePluginPlayMovieCore( playervc, movieFinishedTargetName, movieFinishedMethodName );
+	_SimpleMoviePluginPlayMovieCore( playervc, movieFinishedTargetName, movieFinishedMethodName, orientation );
 }
 
 // for use from bundle.
 // @param urlMovie ex. "http://example.com/movies/example.mp4"
+// @param orientation	0:All, 1:Portrait only, 2:Landscape only
 extern "C" void _SimpleMoviePluginPlayMovieURL( const char* urlMovie,
-		const char* movieFinishedTargetName = NULL, const char* movieFinishedMethodName = NULL )
+																							 const char* movieFinishedTargetName = NULL,
+																							 const char* movieFinishedMethodName = NULL,
+																							 const int orientation = 0 )
 {
 	NSString*	strUrlMovie	= [NSString stringWithCString:urlMovie encoding:NSUTF8StringEncoding];
 	NSURL* nsurlMovie = [NSURL URLWithString:strUrlMovie];
@@ -62,7 +82,7 @@ extern "C" void _SimpleMoviePluginPlayMovieURL( const char* urlMovie,
 	// load.
 	SimpleMovieViewController*	playervc = [[SimpleMovieViewController alloc] initWithContentURL:nsurlMovie];
 	
-	_SimpleMoviePluginPlayMovieCore( playervc, movieFinishedTargetName, movieFinishedMethodName );
+	_SimpleMoviePluginPlayMovieCore( playervc, movieFinishedTargetName, movieFinishedMethodName, orientation );
 }
 
 

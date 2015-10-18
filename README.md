@@ -13,7 +13,8 @@ Usage
 var callbackTargetName = "hud";	// callback target (GameObject), (default:null)
 var callbackMethodName = "OnDoneSimpleMovie";	// calback method name for the target (default:null)
 
-SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callbackMethodName);
+SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callbackMethodName, 0);
+// SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", null, null, 0); // simple sample
 ```
 
 * The source to open the movie at "http://example.com/movies/example.mp4"
@@ -22,21 +23,19 @@ SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callb
 var callbackTargetName = "hud";	// callback target (GameObject), (default:null)
 var callbackMethodName = "OnDoneSimpleMovie";	// calback method name for the target (default:null)
 
-SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4", callbackTargetName, callbackMethodName;
+SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4", callbackTargetName, callbackMethodName, 0);
+// SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4", null, null, 0);
 ```
 
-Customize
+Parameters
 =================
 
-Orientations
+orientation
 -----------------
 
-* iOS/SimpleMovie.mm
-
-```
-playervc.supportedOrientationMask	= UIInterfaceOrientationMaskAll;	// UIInterfaceOrientationMaskLandscape;
-```
-
+* 0:All
+* 1:Portrait only
+* 2:Landscape only
 
 
 about the sample movie - dyson360eye.mp4

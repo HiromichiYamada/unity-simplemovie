@@ -27,7 +27,7 @@ function OnGUI() {
 		var callbackTargetName = "hud";	// callback target (GameObject), (default:null)
 		var callbackMethodName = "OnDoneSimpleMovie";	// calback method name for the target (default:null)
 		
-		SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callbackMethodName );
+		SimpleMovie.PlayMovie("mymovie", "dyson360eye", "mp4", callbackTargetName, callbackMethodName, 2 );
 		
 //		SimpleMovie.PlayMovieURL("http://example.com/movies/example.mp4", callbackTargetName, callbackMethodName);
 	}

@@ -24,11 +24,10 @@
 	return YES;
 }
 
--(NSUInteger)supportedInterfaceOrientations
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
 	return self.supportedOrientationMask;
 }
-
 
 - (void) viewDidLoad
 {
